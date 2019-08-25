@@ -8,10 +8,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
-
+from myshop.shop.permissions import UserAccessPermission
 
 class BrandList(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
 
     def get(self, request):
         brands = Brand.objects.all()
@@ -19,6 +19,7 @@ class BrandList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
+
         serializer = BrandSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -27,6 +28,7 @@ class BrandList(APIView):
 
 
 class ItemList(APIView):
+    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
 
     def get(self, request):
         items = Item.objects.all()
@@ -42,6 +44,7 @@ class ItemList(APIView):
 
 
 class OrderList(APIView):
+    permission_classes = [permissions.IsAuthenticated, UserAccessPermission]
 
     def get(self, request):
         orders = Order.objects.all()

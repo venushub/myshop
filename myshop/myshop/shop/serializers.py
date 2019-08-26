@@ -14,7 +14,8 @@ class BrandSerializer(serializers.ModelSerializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-
+    item_category = CategorySerializer(read_only=True)
+    item_brand = BrandSerializer(read_only=True)
     class Meta:
         model = Item
         fields = ['id', 'item_name', 'item_quantity',
@@ -26,4 +27,4 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ['id', 'order_item', 'order_user']
+        fields = ['id', 'order_user' ,'order_item']

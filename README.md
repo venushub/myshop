@@ -19,9 +19,11 @@ By default we get two test users with below ids and passwords
 1. username = testuser1 , password = shop@123
 2. username = testuser2 , password = shop@123
 
-API Defenitions
-
 ------------------------------------------------------------------------------
+
+API Defenitions (Only basic auth is used for simplicity)
+
+
 
 GET localhost:8000/brands/ (access for admin and testusers)
 POST localhost:8000/brands/ {"brand_name" : "mynewbrand"} (access only for admin)

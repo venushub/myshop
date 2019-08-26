@@ -2,6 +2,10 @@ myshop/myshop/db.sqlite3
 
 myshop/db.sqlite3
 
+db.sqlite3
+
+*.sqlite3
+
 myenv/
 
 *.pyc
